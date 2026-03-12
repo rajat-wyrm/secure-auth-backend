@@ -1,6 +1,7 @@
 # User: @Indexed(unique=true) on username, BCrypt-hashed password
 # User: @Indexed(unique=true) on username, BCrypt-hashed password
 # User: @Indexed(unique=true) on username, BCrypt-hashed password
+# User: @Indexed(unique=true) on username, BCrypt-hashed password
 package com.project.authapi;
 
 import jakarta.validation.constraints.NotBlank;
