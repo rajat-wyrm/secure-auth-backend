@@ -1,6 +1,7 @@
 # AuthController: POST /register, POST /login, returns JWT
 # AuthController: POST /register, POST /login, returns JWT
 # AuthController: POST /register, POST /login, returns JWT
+# AuthController: POST /register, POST /login, returns JWT
 package com.project.authapi;
 
 import com.project.authapi.dto.AuthResponse;
