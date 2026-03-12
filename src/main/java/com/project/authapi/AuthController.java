@@ -38,3 +38,24 @@ public class AuthController {
         return ResponseEntity.ok("Secure Auth API Running");
     }
 
+    @PostMapping("/register")
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody RegisterRequest req) {
+        if (userRepository.existsByUsername(req.username())) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+        }
+        User user = new User(req.username(), passwordEncoder.encode(req.password()));
+        userRepository.save(user);
+        String token = jwtService.generateToken(user.getId());
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(new AuthResponse(token, user.getId()));
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest req) {
+        return userRepository.findByUsername(req.username())
+                .filter(u -> passwordEncoder.matches(req.password(), u.getPassword()))
+                .map(u -> ResponseEntity.ok(new AuthResponse(
+                        jwtService.generateToken(u.getId()), u.getId())))
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
+    }
+}
