@@ -28,3 +28,33 @@
 
     <developers>
         <developer>
+            <id>rajat-wyrm</id>
+            <name>Rajat Kumar</name>
+            <email>rajat-wyrm@users.noreply.github.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/rajat-wyrm/secure-auth-backend.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/rajat-wyrm/secure-auth-backend.git</developerConnection>
+        <url>https://github.com/rajat-wyrm/secure-auth-backend</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <properties>
+        <java.version>17</java.version>
+        <jjwt.version>0.12.6</jjwt.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webmvc</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
