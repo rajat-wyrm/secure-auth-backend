@@ -38,3 +38,24 @@ public class GlobalExceptionHandler {
         log.warn("duplicate key: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(
                 ErrorResponse.of(409, "Conflict", "Resource already exists"));
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ErrorResponse> handleBadCreds(BadCredentialsException ex) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                ErrorResponse.of(401, "Unauthorized", "Invalid credentials"));
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<ErrorResponse> handleDenied(AccessDeniedException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+                ErrorResponse.of(403, "Forbidden", "Access denied"));
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorResponse> handleAll(Exception ex) {
+        log.error("unhandled exception", ex);
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(
+                ErrorResponse.of(500, "Internal Server Error", "Something went wrong"));
+    }
+}
