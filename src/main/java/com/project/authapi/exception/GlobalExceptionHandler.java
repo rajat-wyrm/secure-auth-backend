@@ -1,6 +1,7 @@
 # Centralized error handler, sanitized responses
 # Centralized error handler, sanitized responses
 # Centralized error handler, sanitized responses
+# Centralized error handler, sanitized responses
 package com.project.authapi.exception;
 
 import com.project.authapi.dto.ErrorResponse;
