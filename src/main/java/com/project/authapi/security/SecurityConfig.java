@@ -42,3 +42,25 @@ public class SecurityConfig {
                 .cors(AbstractHttpConfigurer::disable)
                 .sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(
+                                "/api/auth/",
+                                "/api/auth/register",
+                                "/api/auth/login",
+                                "/actuator/health"
+                        ).permitAll()
+                        .anyRequest().authenticated()
+                )
+                .exceptionHandling(eh -> eh
+                        .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
+                        .accessDeniedHandler((req, res, e) -> writeError(res, HttpStatus.FORBIDDEN, "Forbidden"))
+                )
+                .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+        return http.build();
+    }
+
+    private static void writeError(HttpServletResponse res, HttpStatus status, String message) throws IOException {
+        res.setStatus(status.value());
+        res.setContentType(MediaType.APPLICATION_JSON_VALUE);
+        new ObjectMapper().writeValue(res.getWriter(), ErrorResponse.of(status.value(), status.getReasonPhrase(), message));
+    }
+}
