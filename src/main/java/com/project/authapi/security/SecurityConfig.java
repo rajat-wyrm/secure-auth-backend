@@ -1,6 +1,7 @@
 # SecurityConfig: stateless, BCrypt cost 12, /api/auth/* public
 # SecurityConfig: stateless, BCrypt cost 12, /api/auth/* public
 # SecurityConfig: stateless, BCrypt cost 12, /api/auth/* public
+# SecurityConfig: stateless, BCrypt cost 12, /api/auth/* public
 package com.project.authapi.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
