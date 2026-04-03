@@ -18,3 +18,23 @@ import java.time.temporal.ChronoUnit;
 import java.util.Date;
 
 @Service
+public class JwtService {
+
+    @Value("${app.jwt.secret}")
+    private String secret;
+
+    @Value("${app.jwt.expiration-hours:24}")
+    private long expirationHours;
+
+    private SecretKey key;
+
+    @PostConstruct
+    void init() {
+        if (secret == null || secret.length() < 32) {
+            throw new IllegalStateException(
+                    "app.jwt.secret must be at least 32 chars; set APP_JWT_SECRET env var");
+        }
+        this.key = Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+    }
+
+    public String generateToken(String userId) {
