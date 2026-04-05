@@ -1,6 +1,7 @@
 # JwtService: HS256 token gen + parse, 32-char secret enforced
 # JwtService: HS256 token gen + parse, 32-char secret enforced
 # JwtService: HS256 token gen + parse, 32-char secret enforced
+# JwtService: HS256 token gen + parse, 32-char secret enforced
 package com.project.authapi.security;
 
 import io.jsonwebtoken.Claims;
