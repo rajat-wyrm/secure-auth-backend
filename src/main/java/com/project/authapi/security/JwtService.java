@@ -38,3 +38,24 @@ public class JwtService {
     }
 
     public String generateToken(String userId) {
+        Instant now = Instant.now();
+        return Jwts.builder()
+                .subject(userId)
+                .issuedAt(Date.from(now))
+                .expiration(Date.from(now.plus(expirationHours, ChronoUnit.HOURS)))
+                .signWith(key)
+                .compact();
+    }
+
+    public Claims parseAndValidate(String token) {
+        Jws<Claims> jws = Jwts.parser()
+                .verifyWith(key)
+                .build()
+                .parseSignedClaims(token);
+        return jws.getPayload();
+    }
+
+    public long getExpirationHours() {
+        return expirationHours;
+    }
+}
