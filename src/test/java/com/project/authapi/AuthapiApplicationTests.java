@@ -9,3 +9,15 @@ import org.springframework.test.context.ActiveProfiles;
 @SpringBootTest
 @ActiveProfiles("test")
 class AuthapiApplicationTests {
+
+    @Autowired JwtService jwtService;
+
+    @Test
+    void contextLoads() {
+    }
+
+    @Test
+    void jwtServiceBeanIsWired() {
+        org.assertj.core.api.Assertions.assertThat(jwtService).isNotNull();
+    }
+}
