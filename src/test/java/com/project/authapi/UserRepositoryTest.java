@@ -13,3 +13,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @ActiveProfiles("test")
+class UserRepositoryTest {
+
+    @Autowired UserRepository userRepository;
+    @Autowired PasswordEncoder passwordEncoder;
+
+    @BeforeEach
+    void clean() {
+        userRepository.deleteAll();
+    }
+
+    @Test
+    void save_then_find_by_username_returns_user() {
+        User u = new User("dave", passwordEncoder.encode("DavePass123!"));
+        userRepository.save(u);
+
