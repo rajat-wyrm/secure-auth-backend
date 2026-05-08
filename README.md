@@ -28,3 +28,33 @@ Production-grade authentication API. Spring Boot + MongoDB + JWT + Spring Securi
 
 ```bash
 export APP_JWT_SECRET="$(openssl rand -hex 32)"
+export MONGODB_URI="mongodb://localhost:27017/authdb"
+mvn spring-boot:run
+```
+
+### Register
+
+```bash
+curl -X POST http://localhost:8080/api/auth/register \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"alice","password":"Sup3rSecret!"}'
+```
+
+### Login
+
+```bash
+curl -X POST http://localhost:8080/api/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"username":"alice","password":"Sup3rSecret!"}'
+```
+
+### Use the token
+
+```bash
+TOKEN="<paste-token-here>"
+curl http://localhost:8080/api/auth/me -H "Authorization: Bearer $TOKEN"
+```
+
+## Configuration
+
+| Env var                    | Default                                       | Notes                            |
