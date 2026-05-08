@@ -58,3 +58,33 @@ curl http://localhost:8080/api/auth/me -H "Authorization: Bearer $TOKEN"
 ## Configuration
 
 | Env var                    | Default                                       | Notes                            |
+|----------------------------|-----------------------------------------------|----------------------------------|
+| `PORT`                     | `8080`                                        | server port                      |
+| `MONGODB_URI`              | `mongodb://localhost:27017/authdb`            | full Mongo connection string     |
+| `APP_JWT_SECRET`           | _(required, >= 32 chars)_                      | HS256 signing key                 |
+| `APP_JWT_EXPIRATION_HOURS` | `24` (`12` in prod profile)                    | token lifetime                   |
+
+Spring profiles:
+- default — dev
+- `prod` — stricter logging, no health details
+- `test` — `application-test.properties` for integration tests
+
+## Tests
+
+```bash
+mvn test
+```
+
+The test profile uses an in-process MongoDB via `de.flapdoodle.embed.mongo.spring3x` so no external service is required.
+
+## Security model
+
+- Passwords are never logged or returned in responses.
+- JWT is signed with HS256; tampering invalidates the signature.
+- MongoDB unique index prevents duplicate usernames at the storage layer.
+- Global exception handler returns sanitized error responses — no stack traces leak to clients.
+- All `/api/auth/*` endpoints except `/`, `/register`, `/login`, and `/actuator/health` require a valid Bearer token.
+
+## License
+
+MIT
