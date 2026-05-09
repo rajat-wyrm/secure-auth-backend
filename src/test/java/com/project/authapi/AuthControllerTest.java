@@ -31,3 +31,36 @@ class AuthControllerTest {
     @Autowired ObjectMapper mapper;
 
     @BeforeEach
+    void clean() {
+        userRepository.deleteAll();
+    }
+
+    @Test
+    void register_then_login_round_trip_returns_jwt() throws Exception {
+        var regBody = mapper.writeValueAsString(
+                new RegisterRequest("alice_test", "Sup3rSecret!"));
+
+        MvcResult regResult = mvc.perform(post("/api/auth/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(regBody))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.token").exists())
+                .andExpect(jsonPath("$.userId").exists())
+                .andReturn();
+
+        var token = mapper.readValue(regResult.getResponse().getContentAsString(),
+                AuthResponse.class).token();
+        assertThat(token).isNotBlank();
+
+        var loginBody = mapper.writeValueAsString(
+                new LoginRequest("alice_test", "Sup3rSecret!"));
+
+        mvc.perform(post("/api/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(loginBody))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.token").exists());
+    }
+
+    @Test
+    void login_with_wrong_password_returns_401() throws Exception {
