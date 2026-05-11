@@ -64,3 +64,36 @@ class AuthControllerTest {
 
     @Test
     void login_with_wrong_password_returns_401() throws Exception {
+        userRepository.save(new User("bob", passwordEncoder.encode("right-pass-1234")));
+
+        var body = mapper.writeValueAsString(new LoginRequest("bob", "wrong-pass-5678"));
+
+        mvc.perform(post("/api/auth/login")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isUnauthorized());
+    }
+
+    @Test
+    void register_with_short_password_returns_400() throws Exception {
+        var body = mapper.writeValueAsString(new RegisterRequest("eve", "short"));
+
+        mvc.perform(post("/api/auth/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void register_with_duplicate_username_returns_409() throws Exception {
+        userRepository.save(new User("carol", passwordEncoder.encode("CarolPass123!")));
+
+        var body = mapper.writeValueAsString(
+                new RegisterRequest("carol", "AnotherPass123!"));
+
+        mvc.perform(post("/api/auth/register")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(body))
+                .andExpect(status().isConflict());
+    }
+}
