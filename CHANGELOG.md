@@ -49,3 +49,29 @@ All notable changes to secure-auth-backend will be documented here.
 - BCrypt bean via PasswordEncoder
 
 ## [0.4.1] - 2026-04-19
+
+- add JwtAuthFilter
+- Bearer token extraction
+
+## [0.4.2] - 2026-04-22
+
+- fix: clear context on invalid token
+- test: jwt roundtrip
+
+## [0.5.0] - 2026-04-28
+
+- add GlobalExceptionHandler
+- sanitized error responses
+
+## [0.5.1] - 2026-05-02
+
+- add application.properties + dev/prod/test profiles
+- fix: typo in description
+
+## [0.6.0] - 2026-05-08
+
+- add integration tests (AuthControllerTest)
+- test: register/login round-trip
+
+## [0.6.1] - 2026-05-12
+
