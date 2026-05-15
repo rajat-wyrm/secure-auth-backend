@@ -13,3 +13,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add Spring Security + JJWT deps (not yet wired)
 - fix pom.xml typo
 
+## [0.1.0] - 2026-03-15
+
+- switch /register and /login to POST
+- add input validation
+
