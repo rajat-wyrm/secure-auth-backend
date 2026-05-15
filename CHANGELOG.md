@@ -28,3 +28,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add DTOs (RegisterRequest, LoginRequest, AuthResponse)
 - add ErrorResponse DTO
 
+## [0.2.1] - 2026-03-29
+
+- fix: @Indexed(unique=true) on username
+- add Mongo index
+
