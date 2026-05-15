@@ -75,3 +75,29 @@ All notable changes to secure-auth-backend will be documented here.
 
 ## [0.6.1] - 2026-05-12
 
+- test: wrong password -> 401
+- test: short password -> 400
+- test: dup username -> 409
+
+## [0.6.2] - 2026-05-16
+
+- add UserRepositoryTest
+- add JwtServiceTest
+- add Spring Security test dep
+
+## [0.7.0] - 2026-05-22
+
+- add Dockerfile (multi-stage)
+- add docker-compose with healthchecks
+
+## [0.7.1] - 2026-05-26
+
+- fix: Dockerfile uses non-root user
+- perf: G1GC + MaxRAMPercentage=75
+
+## [1.0.0] - 2026-05-30
+
+- production-ready
+- update JJWT 0.11.5 -> 0.12.6
+- comprehensive README + CHANGELOG + LICENSE + SECURITY + docs/
+
