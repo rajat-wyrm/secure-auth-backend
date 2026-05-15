@@ -53,3 +53,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add JwtAuthFilter
 - Bearer token extraction
 
+## [0.4.2] - 2026-04-22
+
+- fix: clear context on invalid token
+- test: jwt roundtrip
+
