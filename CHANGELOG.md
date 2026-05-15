@@ -43,3 +43,8 @@ All notable changes to secure-auth-backend will be documented here.
 - fix: enforce 32-char secret at startup
 - fail fast on weak config
 
+## [0.4.0] - 2026-04-15
+
+- add Spring Security stateless config
+- BCrypt bean via PasswordEncoder
+
