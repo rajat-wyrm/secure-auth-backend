@@ -73,3 +73,9 @@ All notable changes to secure-auth-backend will be documented here.
 - add integration tests (AuthControllerTest)
 - test: register/login round-trip
 
+## [0.6.1] - 2026-05-12
+
+- test: wrong password -> 401
+- test: short password -> 400
+- test: dup username -> 409
+
