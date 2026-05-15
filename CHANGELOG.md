@@ -68,3 +68,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add application.properties + dev/prod/test profiles
 - fix: typo in description
 
+## [0.6.0] - 2026-05-08
+
+- add integration tests (AuthControllerTest)
+- test: register/login round-trip
+
