@@ -38,3 +38,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add JWT issuance (HS256)
 - JwtService bean
 
+## [0.3.1] - 2026-04-08
+
+- fix: enforce 32-char secret at startup
+- fail fast on weak config
+
