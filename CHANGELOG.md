@@ -63,3 +63,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add GlobalExceptionHandler
 - sanitized error responses
 
+## [0.5.1] - 2026-05-02
+
+- add application.properties + dev/prod/test profiles
+- fix: typo in description
+
