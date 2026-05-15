@@ -90,3 +90,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add Dockerfile (multi-stage)
 - add docker-compose with healthchecks
 
+## [0.7.1] - 2026-05-26
+
+- fix: Dockerfile uses non-root user
+- perf: G1GC + MaxRAMPercentage=75
+
