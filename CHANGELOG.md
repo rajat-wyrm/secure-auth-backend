@@ -33,3 +33,8 @@ All notable changes to secure-auth-backend will be documented here.
 - fix: @Indexed(unique=true) on username
 - add Mongo index
 
+## [0.3.0] - 2026-04-04
+
+- add JWT issuance (HS256)
+- JwtService bean
+
