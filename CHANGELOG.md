@@ -18,3 +18,8 @@ All notable changes to secure-auth-backend will be documented here.
 - switch /register and /login to POST
 - add input validation
 
+## [0.1.1] - 2026-03-19
+
+- fix: BCrypt cost 10 -> 12
+- fix: duplicate username returns 409
+
