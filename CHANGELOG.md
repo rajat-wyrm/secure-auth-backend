@@ -79,3 +79,9 @@ All notable changes to secure-auth-backend will be documented here.
 - test: short password -> 400
 - test: dup username -> 409
 
+## [0.6.2] - 2026-05-16
+
+- add UserRepositoryTest
+- add JwtServiceTest
+- add Spring Security test dep
+
