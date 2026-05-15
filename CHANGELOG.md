@@ -85,3 +85,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add JwtServiceTest
 - add Spring Security test dep
 
+## [0.7.0] - 2026-05-22
+
+- add Dockerfile (multi-stage)
+- add docker-compose with healthchecks
+
