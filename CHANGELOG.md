@@ -58,3 +58,8 @@ All notable changes to secure-auth-backend will be documented here.
 - fix: clear context on invalid token
 - test: jwt roundtrip
 
+## [0.5.0] - 2026-04-28
+
+- add GlobalExceptionHandler
+- sanitized error responses
+
