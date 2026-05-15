@@ -48,3 +48,8 @@ All notable changes to secure-auth-backend will be documented here.
 - add Spring Security stateless config
 - BCrypt bean via PasswordEncoder
 
+## [0.4.1] - 2026-04-19
+
+- add JwtAuthFilter
+- Bearer token extraction
+
