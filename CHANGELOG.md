@@ -95,3 +95,9 @@ All notable changes to secure-auth-backend will be documented here.
 - fix: Dockerfile uses non-root user
 - perf: G1GC + MaxRAMPercentage=75
 
+## [1.0.0] - 2026-05-30
+
+- production-ready
+- update JJWT 0.11.5 -> 0.12.6
+- comprehensive README + CHANGELOG + LICENSE + SECURITY + docs/
+
