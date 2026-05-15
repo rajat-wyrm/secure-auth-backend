@@ -23,3 +23,8 @@ All notable changes to secure-auth-backend will be documented here.
 - fix: BCrypt cost 10 -> 12
 - fix: duplicate username returns 409
 
+## [0.2.0] - 2026-03-25
+
+- add DTOs (RegisterRequest, LoginRequest, AuthResponse)
+- add ErrorResponse DTO
+
