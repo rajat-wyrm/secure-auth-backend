@@ -4,3 +4,9 @@ target/
 *.iml
 .git/
 .gitignore
+.gitattributes
+.mvn/wrapper/maven-wrapper.properties
+README.md
+docker-compose.yml
+Dockerfile
+.dockerignore
